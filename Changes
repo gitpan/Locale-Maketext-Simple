@@ -1,4 +1,16 @@
 ____________________________________________________________________________
+[  7573] By: autrijus                              on 2003/08/17  08:19:55
+        Log: * preparing for 0.04. 
+	   ! lib/Locale/Maketext/Simple.pm
+____________________________________________________________________________
+[  7572] By: autrijus                              on 2003/08/17  07:34:46
+        Log: * oops, was not owrking at all
+	   ! lib/Locale/Maketext/Simple.pm
+____________________________________________________________________________
+[  7312] By: autrijus                              on 2003/08/03  08:21:47
+        Log: * changes and signatures.
+	   ! Changes MANIFEST
+____________________________________________________________________________
 [  7311] By: autrijus                              on 2003/08/03  08:19:59
         Log: * This be 0.03.
              * Documentation cleanup.

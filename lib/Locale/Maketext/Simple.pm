@@ -1,8 +1,8 @@
 # $File: //member/autrijus/Locale-Maketext-Simple/lib/Locale/Maketext/Simple.pm $ $Author: autrijus $
-# $Revision: #5 $ $Change: 7311 $ $DateTime: 2003/08/03 08:19:59 $
+# $Revision: #7 $ $Change: 7573 $ $DateTime: 2003/08/17 08:19:55 $
 
 package Locale::Maketext::Simple;
-$Locale::Maketext::Simple::VERSION = '0.03';
+$Locale::Maketext::Simple::VERSION = '0.04';
 
 use strict;
 
@@ -12,8 +12,8 @@ Locale::Maketext::Simple - Simple interface to Locale::Maketext::Lexicon
 
 =head1 VERSION
 
-This document describes version 0.03 of Locale::Maketext::Simple,
-released August 3, 2003.
+This document describes version 0.04 of Locale::Maketext::Simple,
+released August 17, 2003.
 
 =head1 SYNOPSIS
 
@@ -34,6 +34,7 @@ More sophisticated example:
 	Style	    => 'gettext',	# %1 instead of [_1]
 	Export	    => 'maketext',	# maketext() instead of loc()
 	Subclass    => 'L10N',		# Foo::L10N instead of Foo::I18N
+	Decode	    => 1,		# decode entries to unicode-strings
     );
     sub japh {
 	print maketext("Just another %1 hacker", "Perl");
@@ -115,24 +116,25 @@ sub load_loc {
     return $Loc{$pkg} if exists $Loc{$pkg};
 
     eval { require Locale::Maketext::Lexicon; 1 }   or return;
-    Locale::Maketext::Lexicon->VERSION < 0.20	    or return;
+    $Locale::Maketext::Lexicon::VERSION > 0.20	    or return;
     eval { require File::Spec; 1 }		    or return;
     my $path = $args{Path} || $class->auto_path($args{Class})	or return;
+    my $pattern = File::Spec->catfile($path, '*.[pm]o');
+    my $decode = $args{Decode} || 0;
 
-    my $pattern = quotemeta(File::Spec->catfile($path, '*.[pm]o'));
-
-    eval qq#
+    eval qq{
 	package $pkg;
-
-        %Lexicon = ( '_AUTO' => 1 );
-	Lexicon::Maketext::Lexicon->import({
+	use base 'Locale::Maketext';
+        %${pkg}::Lexicon = ( '_AUTO' => 1 );
+	Locale::Maketext::Lexicon->import({
 	    '*'	=> [ Gettext => "$pattern" ],
+	    _decode => $decode,
 	});
 
 	1;
-    # or return;
+    } or die $@;
     
-    my $lh = eval { $pkg->get_handle } or return;
+    my $lh = eval { $pkg->get_handle } or die $@;
     my $style = lc($args{Style});
     if ($style eq 'maketext') {
 	$Loc{$pkg} = $lh->can('maketext');

@@ -1,5 +1,5 @@
 This file contains message digests of all files listed in MANIFEST,
-signed via the Module::Signature module, version 0.28.
+signed via the Module::Signature module, version 0.33.
 
 To verify the content in this distribution, first make sure you have
 Module::Signature installed, then type:
@@ -14,9 +14,9 @@ not run its Makefile.PL or Build.PL.
 -----BEGIN PGP SIGNED MESSAGE-----
 Hash: SHA1
 
-SHA1 1c67f0dc7bd74aaeaf110761f35d95087c990ae8 Changes
+SHA1 f8840c50060f686fd5ea905ade2ea2e6a25f10bf Changes
 SHA1 aee4039e6cb3a1aa50c5a044a0db97e088e3e9a1 MANIFEST
-SHA1 3cbde1a97254c3f41d6f3920754803aeb4bcdde4 META.yml
+SHA1 c497efc9090f14f7ba571162174388c603f1324a META.yml
 SHA1 ff58853d2c3d05c1202209069051e612ae37cf0c Makefile.PL
 SHA1 7c9473008da2ba27223d189b37c7e696605407d3 README
 SHA1 fd5093c4d1bf31795995d24c2ed018319ac1ec07 inc/Module/Install.pm
@@ -24,12 +24,12 @@ SHA1 276ae59951d39d692be2a7a943a54c45f6822f16 inc/Module/Install/Base.pm
 SHA1 cb63ee2fceecea6f93cc25bfb5cc122ca6870ed8 inc/Module/Install/MakeMaker.pm
 SHA1 f042d91d7f691e36c8bcb0b495dfc0b9f92576c3 inc/Module/Install/Makefile.pm
 SHA1 f085c0e9e00b65499775acd2d09721e760d41897 inc/Module/Install/Metadata.pm
-SHA1 807558bc90d21bd75a06a7ba37dde6e880a6ea1d lib/Locale/Maketext/Simple.pm
+SHA1 9cb13ea1e5c80ed141f4593fb9f53a2d437218ed lib/Locale/Maketext/Simple.pm
 SHA1 8a17d4e4fd6111c67c50d822aeeb68a3bf9a559f t/1-basic.t
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v1.2.2 (FreeBSD)
 
-iD8DBQE/LMc2tLPdNzw1AaARAhEXAJ0ZSmz3CxrRjlfNujM+kNqFfDaLxgCgg/mf
-wVEi1BTfIoihlrI4SsvAV+E=
-=Us/t
+iD8DBQE/P36ctLPdNzw1AaARAuByAJwNR+nqHlVlb426FdVMSfs8brhD0ACeKrIA
+rS7Re6s6ogdJDBJUg4YR3/Y=
+=fav2
 -----END PGP SIGNATURE-----
