@@ -1,8 +1,8 @@
 # $File: //member/autrijus/Locale-Maketext-Simple/lib/Locale/Maketext/Simple.pm $ $Author: autrijus $
-# $Revision: #7 $ $Change: 7573 $ $DateTime: 2003/08/17 08:19:55 $
+# $Revision: #9 $ $Change: 7576 $ $DateTime: 2003/08/17 13:43:48 $
 
 package Locale::Maketext::Simple;
-$Locale::Maketext::Simple::VERSION = '0.04';
+$Locale::Maketext::Simple::VERSION = '0.05';
 
 use strict;
 
@@ -12,7 +12,7 @@ Locale::Maketext::Simple - Simple interface to Locale::Maketext::Lexicon
 
 =head1 VERSION
 
-This document describes version 0.04 of Locale::Maketext::Simple,
+This document describes version 0.05 of Locale::Maketext::Simple,
 released August 17, 2003.
 
 =head1 SYNOPSIS
@@ -122,19 +122,21 @@ sub load_loc {
     my $pattern = File::Spec->catfile($path, '*.[pm]o');
     my $decode = $args{Decode} || 0;
 
-    eval qq{
+    $pattern =~ s{\\}{/}g; # to counter win32 paths
+
+    eval "
 	package $pkg;
 	use base 'Locale::Maketext';
         %${pkg}::Lexicon = ( '_AUTO' => 1 );
 	Locale::Maketext::Lexicon->import({
-	    '*'	=> [ Gettext => "$pattern" ],
-	    _decode => $decode,
+	    '*'	=> [ Gettext => \$pattern ],
+	    _decode => \$decode,
 	});
 
 	1;
-    } or die $@;
+    " or die $@;
     
-    my $lh = eval { $pkg->get_handle } or die $@;
+    my $lh = eval { $pkg->get_handle } or return;
     my $style = lc($args{Style});
     if ($style eq 'maketext') {
 	$Loc{$pkg} = $lh->can('maketext');

@@ -1,4 +1,17 @@
 ____________________________________________________________________________
+[  7576] By: autrijus                              on 2003/08/17  13:43:48
+        Log: * This is the real 0.05. oops.
+	   ! lib/Locale/Maketext/Simple.pm
+____________________________________________________________________________
+[  7575] By: autrijus                              on 2003/08/17  13:41:22
+        Log: * This be 0.05...
+             * fixes breakage on win32 with \\ pathnames.
+	   ! lib/Locale/Maketext/Simple.pm
+____________________________________________________________________________
+[  7574] By: autrijus                              on 2003/08/17  13:09:58
+        Log: * changes.
+	   ! Changes
+____________________________________________________________________________
 [  7573] By: autrijus                              on 2003/08/17  08:19:55
         Log: * preparing for 0.04. 
 	   ! lib/Locale/Maketext/Simple.pm
