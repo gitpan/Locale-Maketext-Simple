@@ -1,10 +1,13 @@
 name: Locale-Maketext-Simple
-module_name: Locale::Maketext::Simple
-version: 0.09
+version: 0.10
 abstract: Simple interface to Locale::Maketext::Lexicon
 author: Autrijus Tang (autrijus@autrijus.org)
+license: perl
 distribution_type: module
+no_index:
+  directory:
+    - inc
 private:
   directory:
     - inc
-generated_by: Module::Install version 0.23
+generated_by: Module::Install version 0.27

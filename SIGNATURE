@@ -1,5 +1,5 @@
 This file contains message digests of all files listed in MANIFEST,
-signed via the Module::Signature module, version 0.35.
+signed via the Module::Signature module, version 0.37.
 
 To verify the content in this distribution, first make sure you have
 Module::Signature installed, then type:
@@ -14,23 +14,22 @@ not run its Makefile.PL or Build.PL.
 -----BEGIN PGP SIGNED MESSAGE-----
 Hash: SHA1
 
-SHA1 631c77f652c69eef7c9094264d5a46aecbda41b4 Changes
-SHA1 7c44e584d751571a4c46dcbf921930ee4c503326 MANIFEST
-SHA1 32be1e6b6b1fc0270a859bd56fc9e20ed435b148 META.yml
-SHA1 ff58853d2c3d05c1202209069051e612ae37cf0c Makefile.PL
+SHA1 ee8092822edeb106b562b7628aacc43cb95db826 Changes
+SHA1 f4ccf8f604d232ab75f6327cdde4ae2f10b38374 MANIFEST
+SHA1 5afeb1ac2659bd8ccc342e278582f00006850cf5 META.yml
+SHA1 b6ee4c67f1774de412472b61d55c6210cab5ad37 Makefile.PL
 SHA1 7c9473008da2ba27223d189b37c7e696605407d3 README
-SHA1 2b6751f9e3f78bfba9ebf348d9d99ddbde9d35e8 inc/Module/Install.pm
-SHA1 0e59a6491b7275cacf070218c862a42e8135f6d8 inc/Module/Install/Base.pm
-SHA1 cb63ee2fceecea6f93cc25bfb5cc122ca6870ed8 inc/Module/Install/MakeMaker.pm
-SHA1 f042d91d7f691e36c8bcb0b495dfc0b9f92576c3 inc/Module/Install/Makefile.pm
-SHA1 5494a21ff1755b95f0d36c788e4816af0c804645 inc/Module/Install/Metadata.pm
-SHA1 f63c9e34117f3b5d3852c5f9527c174ca757253e lib/Locale/Maketext/Simple.pm
+SHA1 8b4877cb0aae407fcb37a4ac31f2f943bfbe2fe4 inc/Module/Install.pm
+SHA1 019bccc5b2e364447c6e6e150d049ca2a216598e inc/Module/Install/Base.pm
+SHA1 8508e76cf6417588c0118ec85f7d56be15383c00 inc/Module/Install/Makefile.pm
+SHA1 ef550fd641db011c741402b799ace0a446f8d8ec inc/Module/Install/Metadata.pm
+SHA1 1c589153c74b1f4de4525e3077a5ad12f3bbd8e5 lib/Locale/Maketext/Simple.pm
 SHA1 50331b1812947917674870f37ba1b5ed4c60b4e5 t/0-signature.t
-SHA1 b8840799ee87cbfb902649eed8cdb762d44b524c t/1-basic.t
+SHA1 6629884e7c371af44b70df36031418ac99cc91bf t/1-basic.t
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v1.2.3 (FreeBSD)
 
-iD8DBQE/ZxKStLPdNzw1AaARAi3WAJ9vaCgzxmR3NdmPsQnB0WSmqomf/gCgnHCl
-UkL0A02dw4fo5yCc9sCzFc0=
-=1blg
+iD8DBQE/s8CFtLPdNzw1AaARAmDQAKCVgNr1hhyWRzqTqTZiv2OFgIysjQCeOkQX
+z0WkWBqC1RuTu2aaJMOFjQs=
+=Vaat
 -----END PGP SIGNATURE-----

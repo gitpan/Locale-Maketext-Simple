@@ -1,4 +1,18 @@
 ____________________________________________________________________________
+[  8837] By: autrijus                              on 2003/11/13  17:30:26
+        Log: * This be 0.10.
+             * Jos Boumans points out that %tense() was not working.
+	   ! Makefile.PL lib/Locale/Maketext/Simple.pm
+	   ! t/1-basic.t
+____________________________________________________________________________
+[  8174] By: autrijus                              on 2003/09/18  20:32:49
+        Log: * changes.
+	   ! Changes
+____________________________________________________________________________
+[  8150] By: autrijus                              on 2003/09/16  13:38:35
+        Log: * add reload_loc to clear away cached handles.
+	   ! lib/Locale/Maketext/Simple.pm t/1-basic.t
+____________________________________________________________________________
 [  8149] By: autrijus                              on 2003/09/16  13:30:32
         Log: * This be 0.09.
              * Marcus Ramberg reports that without an English .po,

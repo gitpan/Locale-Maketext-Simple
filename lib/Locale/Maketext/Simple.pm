@@ -1,8 +1,8 @@
 # $File: //member/autrijus/Locale-Maketext-Simple/lib/Locale/Maketext/Simple.pm $ $Author: autrijus $
-# $Revision: #15 $ $Change: 8150 $ $DateTime: 2003/09/16 13:38:35 $
+# $Revision: #16 $ $Change: 8837 $ $DateTime: 2003/11/13 17:30:26 $
 
 package Locale::Maketext::Simple;
-$Locale::Maketext::Simple::VERSION = '0.09';
+$Locale::Maketext::Simple::VERSION = '0.10';
 
 use strict;
 
@@ -12,8 +12,8 @@ Locale::Maketext::Simple - Simple interface to Locale::Maketext::Lexicon
 
 =head1 VERSION
 
-This document describes version 0.09 of Locale::Maketext::Simple,
-released September 16, 2003.
+This document describes version 0.10 of Locale::Maketext::Simple,
+released November 14, 2003.
 
 =head1 SYNOPSIS
 
@@ -137,6 +137,8 @@ sub load_loc {
 	    '*'	=> [ Gettext => \$pattern ],
 	    _decode => \$decode,
 	});
+	*tense = sub { \$_[1] . ((\$_[2] eq 'present') ? 'ing' : 'ed') }
+	    unless defined &tense;
 
 	1;
     " or die $@;
@@ -197,24 +199,28 @@ sub _default_gettext {
 	    \d+			#   a digit, like %1
 	    |			#     or
 	    (\w+)\(		#   a function call -- 1
-		%\d+		#	  with a digit 
+		(?:		#     either
+		    %\d+	#	an interpolation
+		    |		#     or
+		    ([^,]*)	#	some string -- 2
+		)		#     end either
 		(?:		#     maybe followed
 		    ,		#       by a comma
-		    ([^),]*)	#       and a param -- 2
+		    ([^),]*)	#       and a param -- 3
 		)?		#     end maybe
 		(?:		#     maybe followed
 		    ,		#       by another comma
-		    ([^),]*)	#       and a param -- 3
+		    ([^),]*)	#       and a param -- 4
 		)?		#     end maybe
 		[^)]*		#     and other ignorable params
 	    \)			#   closing function call
 	)			# closing either one of
     }{
-	my $digit = shift;
+	my $digit = $2 || shift;
 	$digit . (
 	    $1 ? (
-		($1 eq 'tense') ? (($2 eq ',present') ? 'ing' : 'ed') :
-		($1 eq 'quant') ? ' ' . (($digit > 1) ? ($3 || "$2s") : $2) :
+		($1 eq 'tense') ? (($3 eq 'present') ? 'ing' : 'ed') :
+		($1 eq 'quant') ? ' ' . (($digit > 1) ? ($4 || "$3s") : $3) :
 		''
 	    ) : ''
 	);

@@ -1,10 +1,11 @@
 # $File: //member/autrijus/Locale-Maketext-Simple/t/1-basic.t $ $Author: autrijus $
-# $Revision: #5 $ $Change: 8150 $ $DateTime: 2003/09/16 13:38:35 $
+# $Revision: #6 $ $Change: 8837 $ $DateTime: 2003/11/13 17:30:26 $
 
 use strict;
 use Test;
 
-BEGIN { plan tests => 7 }
+BEGIN { plan tests => 9 }
+BEGIN { $INC{'Locale/Maketext/Lexicon.pm'} = __FILE__ }
 
 use Locale::Maketext::Simple;
 ok(Locale::Maketext::Simple->VERSION);
@@ -21,3 +22,5 @@ ok(loc_lang('fr'));
 ok(loc("Just %quant(%1,Perl hacker)", 1), "Just 1 Perl hacker");
 ok(loc("Just %quant(%1,Perl hacker)", 2), "Just 2 Perl hackers");
 ok(loc("Just %quant(%1,Mad skill,Mad skillz)", 3), "Just 3 Mad skillz");
+ok(loc("Error %tense(%1,present)", 'uninstall'), "Error uninstalling");
+ok(loc("Error %tense(uninstall,present)"), "Error uninstalling");
