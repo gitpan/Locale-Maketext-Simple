@@ -1,8 +1,8 @@
 # $File: //member/autrijus/Locale-Maketext-Simple/lib/Locale/Maketext/Simple.pm $ $Author: autrijus $
-# $Revision: #13 $ $Change: 7719 $ $DateTime: 2003/08/26 10:36:56 $
+# $Revision: #15 $ $Change: 8150 $ $DateTime: 2003/09/16 13:38:35 $
 
 package Locale::Maketext::Simple;
-$Locale::Maketext::Simple::VERSION = '0.08';
+$Locale::Maketext::Simple::VERSION = '0.09';
 
 use strict;
 
@@ -12,8 +12,8 @@ Locale::Maketext::Simple - Simple interface to Locale::Maketext::Lexicon
 
 =head1 VERSION
 
-This document describes version 0.08 of Locale::Maketext::Simple,
-released August 26, 2003.
+This document describes version 0.09 of Locale::Maketext::Simple,
+released September 16, 2003.
 
 =head1 SYNOPSIS
 
@@ -109,6 +109,9 @@ sub import {
 }
 
 my %Loc;
+
+sub reload_loc { %Loc = () }
+
 sub load_loc {
     my ($class, %args) = @_;
 
@@ -130,6 +133,7 @@ sub load_loc {
 	use base 'Locale::Maketext';
         %${pkg}::Lexicon = ( '_AUTO' => 1 );
 	Locale::Maketext::Lexicon->import({
+	    'i-default' => [ 'Auto' ],
 	    '*'	=> [ Gettext => \$pattern ],
 	    _decode => \$decode,
 	});
@@ -140,7 +144,9 @@ sub load_loc {
     my $lh = eval { $pkg->get_handle } or return;
     my $style = lc($args{Style});
     if ($style eq 'maketext') {
-	$Loc{$pkg} = $lh->can('maketext');
+	$Loc{$pkg} = sub {
+	    $lh->maketext(@_)
+	};
     }
     elsif ($style eq 'gettext') {
 	$Loc{$pkg} = sub {

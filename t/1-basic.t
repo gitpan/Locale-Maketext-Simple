@@ -1,5 +1,5 @@
 # $File: //member/autrijus/Locale-Maketext-Simple/t/1-basic.t $ $Author: autrijus $
-# $Revision: #4 $ $Change: 7646 $ $DateTime: 2003/08/21 21:10:46 $
+# $Revision: #5 $ $Change: 8150 $ $DateTime: 2003/09/16 13:38:35 $
 
 use strict;
 use Test;
@@ -12,6 +12,7 @@ ok(loc("Just [_1] Perl [_2]", qw(another hacker)), "Just another Perl hacker");
 
 {
     local $^W; # shuts up 'redefined' warnings
+    Locale::Maketext::Simple->reload_loc;
     Locale::Maketext::Simple->import(Style => 'gettext');
 }
 

@@ -1,4 +1,17 @@
 ____________________________________________________________________________
+[  8149] By: autrijus                              on 2003/09/16  13:30:32
+        Log: * This be 0.09.
+             * Marcus Ramberg reports that without an English .po,
+	       L::M::S
+             would not pick up any other POs.  Fixed.
+             * Also, the default "maketext" calling style was broken. 
+	       Fixed.
+	   ! lib/Locale/Maketext/Simple.pm
+____________________________________________________________________________
+[  7720] By: autrijus                              on 2003/08/26  10:39:56
+        Log: * changes.
+	   ! Changes
+____________________________________________________________________________
 [  7719] By: autrijus                              on 2003/08/26  10:36:56
         Log: * This be 0.08 for real.
              * loc_lang() could not take zero arguments to switch to
