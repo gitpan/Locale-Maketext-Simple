@@ -1,6 +1,28 @@
 ____________________________________________________________________________
+[  7311] By: autrijus                              on 2003/08/03  08:19:59
+        Log: * This be 0.03.
+             * Documentation cleanup.
+             * Avoid warnings during testing.
+	   ! lib/Locale/Maketext/Simple.pm t/1-basic.t
+____________________________________________________________________________
+[  6008] By: autrijus                              on 2003/05/20  09:04:29
+        Log: * changes and signatures.
+	   ! Changes MANIFEST Makefile.PL README
+____________________________________________________________________________
+[  6001] By: autrijus                              on 2003/05/20  08:07:50
+        Log: * This be 0.02.
+	   ! lib/Locale/Maketext/Simple.pm
+____________________________________________________________________________
+[  6000] By: autrijus                              on 2003/05/20  08:03:23
+        Log: * add Path option and loc_lang function.
+	   ! lib/Locale/Maketext/Simple.pm t/1-basic.t
+____________________________________________________________________________
+[  5743] By: autrijus                              on 2003/05/09  20:53:56
+        Log: * changes.
+	   + Changes
+____________________________________________________________________________
 [  5742] By: autrijus                              on 2003/05/09  20:52:47
-        Log: * 0.01, barely tested initial release.
+        Log: *¢0.01, barely tested initial release.
 	   + MANIFEST Makefile.PL README t/1-basic.t
 	   ! lib/Locale/Maketext/Simple.pm
 ____________________________________________________________________________

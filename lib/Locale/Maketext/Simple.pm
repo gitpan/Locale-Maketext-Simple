@@ -1,8 +1,8 @@
-# $File: //member/autrijus/Locale-Maketext-Lexicon/lib/Locale/Maketext/Lexicon.pm $ $Author: autrijus $
-# $Revision: #26 $ $Change: 5492 $ $DateTime: 2003/04/28 09:20:51 $
+# $File: //member/autrijus/Locale-Maketext-Simple/lib/Locale/Maketext/Simple.pm $ $Author: autrijus $
+# $Revision: #5 $ $Change: 7311 $ $DateTime: 2003/08/03 08:19:59 $
 
 package Locale::Maketext::Simple;
-$Locale::Maketext::Simple::VERSION = '0.02';
+$Locale::Maketext::Simple::VERSION = '0.03';
 
 use strict;
 
@@ -12,8 +12,8 @@ Locale::Maketext::Simple - Simple interface to Locale::Maketext::Lexicon
 
 =head1 VERSION
 
-This document describes version 0.02 of Locale::Maketext::Simple,
-released May 20, 2003.
+This document describes version 0.03 of Locale::Maketext::Simple,
+released August 3, 2003.
 
 =head1 SYNOPSIS
 
@@ -48,11 +48,14 @@ module authors.
 If B<Locale::Maketext::Lexicon> is not present, it implements a
 minimal localization function by simply interpolating C<[_1]> with
 the first argument, C<[_2]> with the second, etc.  Interpolated
-function like C<[quant,_1]> are treated as C<[_1]>.
+function like C<[quant,_1]> are treated as C<[_1]>, with the sole
+exception of C<[tense,_1,X]>, which will append C<ing> to C<_1> when
+X is C<present>, or appending C<ed> to <_1> otherwise.
 
 =head1 OPTIONS
 
-All options should be passed to C<import>.
+All options are passed either via the C<use> statement, or via an
+explicit C<import>.
 
 =head2 Class
 
@@ -81,7 +84,7 @@ an empty string to disable exporting.
 
 =head2 Subclass
 
-By default, this module creates a C<::I18N> subclass under the
+By default, this module creates an C<::I18N> subclass under the
 caller's package (or the package specified by C<Class>), and stores
 lexicon data in its subclasses.  You can assign a name other than
 C<I18N> via this option.
