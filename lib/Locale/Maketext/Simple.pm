@@ -1,8 +1,8 @@
 # $File: //member/autrijus/Locale-Maketext-Simple/lib/Locale/Maketext/Simple.pm $ $Author: autrijus $
-# $Revision: #17 $ $Change: 9922 $ $DateTime: 2004/02/06 11:13:31 $
+# $Revision: #18 $ $Change: 10409 $ $DateTime: 2004/03/17 13:19:56 $
 
 package Locale::Maketext::Simple;
-$Locale::Maketext::Simple::VERSION = '0.11';
+$Locale::Maketext::Simple::VERSION = '0.12';
 
 use strict;
 
@@ -12,8 +12,8 @@ Locale::Maketext::Simple - Simple interface to Locale::Maketext::Lexicon
 
 =head1 VERSION
 
-This document describes version 0.11 of Locale::Maketext::Simple,
-released February 6, 2004.
+This document describes version 0.12 of Locale::Maketext::Simple,
+released March 17, 2004.
 
 =head1 SYNOPSIS
 
@@ -30,11 +30,13 @@ More sophisticated example:
 
     package Foo::Bar;
     use Locale::Maketext::Simple (
-	Class	    => 'Foo',		# search in auto/Foo/
-	Style	    => 'gettext',	# %1 instead of [_1]
-	Export	    => 'maketext',	# maketext() instead of loc()
-	Subclass    => 'L10N',		# Foo::L10N instead of Foo::I18N
-	Decode	    => 1,		# decode entries to unicode-strings
+	Class	    => 'Foo',	    # search in auto/Foo/
+	Style	    => 'gettext',   # %1 instead of [_1]
+	Export	    => 'maketext',  # maketext() instead of loc()
+	Subclass    => 'L10N',	    # Foo::L10N instead of Foo::I18N
+	Decode	    => 1,	    # decode entries to unicode-strings
+	Encoding    => 'locale',    # but encode lexicons in current locale
+				    # (needs Locale::Maketext::Lexicon 0.36)
     );
     sub japh {
 	print maketext("Just another %1 hacker", "Perl");
@@ -90,6 +92,18 @@ caller's package (or the package specified by C<Class>), and stores
 lexicon data in its subclasses.  You can assign a name other than
 C<I18N> via this option.
 
+=head2 Decode
+
+If set to a true value, source entries will be converted into
+utf8-strings (available in Perl 5.6.1 or later).  This feature
+needs the B<Encode> or B<Encode::compat> module.
+
+=head2 Encoding
+
+Specifies an encoding to store lexicon entries, instead of
+utf8-strings.  If set to C<locale>, the encoding from the current
+locale setting is used.  Implies a true value for C<Decode>.
+
 =cut
 
 sub import {
@@ -115,7 +129,7 @@ sub reload_loc { %Loc = () }
 sub load_loc {
     my ($class, %args) = @_;
 
-    my $pkg = join('::', $args{Class}, $args{Subclass});
+    my $pkg = join('::', grep { defined and length } $args{Class}, $args{Subclass});
     return $Loc{$pkg} if exists $Loc{$pkg};
 
     eval { require Locale::Maketext::Lexicon; 1 }   or return;
@@ -125,6 +139,9 @@ sub load_loc {
     my $path = $args{Path} || $class->auto_path($args{Class}) or return;
     my $pattern = File::Spec->catfile($path, '*.[pm]o');
     my $decode = $args{Decode} || 0;
+    my $encoding = $args{Encoding} || undef;
+
+    $decode = 1 if $encoding;
 
     $pattern =~ s{\\}{/}g; # to counter win32 paths
 
@@ -136,6 +153,7 @@ sub load_loc {
 	    'i-default' => [ 'Auto' ],
 	    '*'	=> [ Gettext => \$pattern ],
 	    _decode => \$decode,
+	    _encoding => \$encoding,
 	});
 	*tense = sub { \$_[1] . ((\$_[2] eq 'present') ? 'ing' : 'ed') }
 	    unless defined &tense;

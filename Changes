@@ -1,4 +1,18 @@
 ____________________________________________________________________________
+[ 10409] By: autrijus                              on 2004/03/17  13:19:56
+        Log: * This be 0.12.
+             * supports the "Encoding" directive, including the
+             special "locale" value.
+	   ! lib/Locale/Maketext/Simple.pm
+____________________________________________________________________________
+[  9924] By: autrijus                              on 2004/02/06  11:19:59
+        Log: * fix test to not emit warnings
+	   ! t/1-basic.t
+____________________________________________________________________________
+[  9923] By: autrijus                              on 2004/02/06  11:16:57
+        Log: * changes and signatures.
+	   ! Changes MANIFEST
+____________________________________________________________________________
 [  9922] By: autrijus                              on 2004/02/06  11:13:31
         Log: * This be 0.11.
              * Marcus Ramberg repoted that ->auto_path was broken and
