@@ -1,8 +1,8 @@
 # $File: //member/autrijus/Locale-Maketext-Simple/lib/Locale/Maketext/Simple.pm $ $Author: autrijus $
-# $Revision: #9 $ $Change: 7576 $ $DateTime: 2003/08/17 13:43:48 $
+# $Revision: #10 $ $Change: 7646 $ $DateTime: 2003/08/21 21:10:46 $
 
 package Locale::Maketext::Simple;
-$Locale::Maketext::Simple::VERSION = '0.05';
+$Locale::Maketext::Simple::VERSION = '0.07';
 
 use strict;
 
@@ -12,8 +12,8 @@ Locale::Maketext::Simple - Simple interface to Locale::Maketext::Lexicon
 
 =head1 VERSION
 
-This document describes version 0.05 of Locale::Maketext::Simple,
-released August 17, 2003.
+This document describes version 0.07 of Locale::Maketext::Simple,
+released August 22, 2003.
 
 =head1 SYNOPSIS
 
@@ -182,11 +182,32 @@ sub default_loc {
 sub _default_gettext {
     my $str = shift;
     $str =~ s{
-	%(?:\d+|(\w+)\(%\d+([^)]*)\))
+	%			# leading symbol
+	(?:			# either one of
+	    \d+			#   a digit, like %1
+	    |			#     or
+	    (\w+)\(		#   a function call -- 1
+		%\d+		#	  with a digit 
+		(?:		#     maybe followed
+		    ,		#       by a comma
+		    ([^),]*)	#       and a param -- 2
+		)?		#     end maybe
+		(?:		#     maybe followed
+		    ,		#       by another comma
+		    ([^),]*)	#       and a param -- 3
+		)?		#     end maybe
+		[^)]*		#     and other ignorable params
+	    \)			#   closing function call
+	)			# closing either one of
     }{
-	shift(@_) . (($1 and $1 eq 'tense')
-	    ? (($2 eq ',present') ? 'ing' : 'ed')
-	    : '');
+	my $digit = shift;
+	$digit . (
+	    $1 ? (
+		($1 eq 'tense') ? (($2 eq ',present') ? 'ing' : 'ed') :
+		($1 eq 'quant') ? ' ' . (($digit > 1) ? ($3 || "$2s") : $2) :
+		''
+	    ) : ''
+	);
     }egx;
     return $str;
 };

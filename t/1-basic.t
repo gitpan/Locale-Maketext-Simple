@@ -1,10 +1,10 @@
 # $File: //member/autrijus/Locale-Maketext-Simple/t/1-basic.t $ $Author: autrijus $
-# $Revision: #3 $ $Change: 7311 $ $DateTime: 2003/08/03 08:19:59 $
+# $Revision: #4 $ $Change: 7646 $ $DateTime: 2003/08/21 21:10:46 $
 
 use strict;
 use Test;
 
-BEGIN { plan tests => 4 }
+BEGIN { plan tests => 7 }
 
 use Locale::Maketext::Simple;
 ok(Locale::Maketext::Simple->VERSION);
@@ -17,3 +17,6 @@ ok(loc("Just [_1] Perl [_2]", qw(another hacker)), "Just another Perl hacker");
 
 ok(loc("Just %1 Perl %2", qw(another hacker)), "Just another Perl hacker");
 ok(loc_lang('fr'));
+ok(loc("Just %quant(%1,Perl hacker)", 1), "Just 1 Perl hacker");
+ok(loc("Just %quant(%1,Perl hacker)", 2), "Just 2 Perl hackers");
+ok(loc("Just %quant(%1,Mad skill,Mad skillz)", 3), "Just 3 Mad skillz");
