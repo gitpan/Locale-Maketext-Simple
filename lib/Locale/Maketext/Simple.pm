@@ -1,8 +1,8 @@
 # $File: //member/autrijus/Locale-Maketext-Simple/lib/Locale/Maketext/Simple.pm $ $Author: autrijus $
-# $Revision: #10 $ $Change: 7646 $ $DateTime: 2003/08/21 21:10:46 $
+# $Revision: #13 $ $Change: 7719 $ $DateTime: 2003/08/26 10:36:56 $
 
 package Locale::Maketext::Simple;
-$Locale::Maketext::Simple::VERSION = '0.07';
+$Locale::Maketext::Simple::VERSION = '0.08';
 
 use strict;
 
@@ -12,8 +12,8 @@ Locale::Maketext::Simple - Simple interface to Locale::Maketext::Lexicon
 
 =head1 VERSION
 
-This document describes version 0.07 of Locale::Maketext::Simple,
-released August 22, 2003.
+This document describes version 0.08 of Locale::Maketext::Simple,
+released August 26, 2003.
 
 =head1 SYNOPSIS
 
@@ -118,7 +118,8 @@ sub load_loc {
     eval { require Locale::Maketext::Lexicon; 1 }   or return;
     $Locale::Maketext::Lexicon::VERSION > 0.20	    or return;
     eval { require File::Spec; 1 }		    or return;
-    my $path = $args{Path} || $class->auto_path($args{Class})	or return;
+
+    my $path = $args{Path} || $class->auto_path($args{Class}) or return;
     my $pattern = File::Spec->catfile($path, '*.[pm]o');
     my $decode = $args{Decode} || 0;
 
@@ -155,7 +156,10 @@ sub load_loc {
 	die "Unknown Style: $style";
     }
 
-    return $Loc{$pkg}, sub { $lh = $pkg->get_handle($_[0]) };
+    return $Loc{$pkg}, sub {
+	$lh = $pkg->get_handle(@_);
+	$lh = $pkg->get_handle(@_);
+    };
 }
 
 sub default_loc {
