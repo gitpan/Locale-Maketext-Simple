@@ -1,8 +1,8 @@
 # $File: //member/autrijus/Locale-Maketext-Simple/lib/Locale/Maketext/Simple.pm $ $Author: autrijus $
-# $Revision: #16 $ $Change: 8837 $ $DateTime: 2003/11/13 17:30:26 $
+# $Revision: #17 $ $Change: 9922 $ $DateTime: 2004/02/06 11:13:31 $
 
 package Locale::Maketext::Simple;
-$Locale::Maketext::Simple::VERSION = '0.10';
+$Locale::Maketext::Simple::VERSION = '0.11';
 
 use strict;
 
@@ -12,8 +12,8 @@ Locale::Maketext::Simple - Simple interface to Locale::Maketext::Lexicon
 
 =head1 VERSION
 
-This document describes version 0.10 of Locale::Maketext::Simple,
-released November 14, 2003.
+This document describes version 0.11 of Locale::Maketext::Simple,
+released February 6, 2004.
 
 =head1 SYNOPSIS
 
@@ -241,7 +241,7 @@ sub _unescape {
 }
 
 sub auto_path {
-    my $calldir = shift;
+    my ($self, $calldir) = @_;
     $calldir =~ s#::#/#g;
     my $path = $INC{$calldir . '.pm'} or return;
 
@@ -282,7 +282,7 @@ Autrijus Tang E<lt>autrijus@autrijus.orgE<gt>
 
 =head1 COPYRIGHT
 
-Copyright 2003 by Autrijus Tang E<lt>autrijus@autrijus.orgE<gt>.
+Copyright 2003, 2004 by Autrijus Tang E<lt>autrijus@autrijus.orgE<gt>.
 
 This program is free software; you can redistribute it and/or 
 modify it under the same terms as Perl itself.

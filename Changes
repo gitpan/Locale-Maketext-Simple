@@ -1,4 +1,15 @@
 ____________________________________________________________________________
+[  9922] By: autrijus                              on 2004/02/06  11:13:31
+        Log: * This be 0.11.
+             * Marcus Ramberg repoted that ->auto_path was broken and
+             always checking L::M::S's auto/ path.
+	   ! Makefile.PL README
+	   ! lib/Locale/Maketext/Simple.pm
+____________________________________________________________________________
+[  8838] By: autrijus                              on 2003/11/13  17:33:37
+        Log: * changes.
+	   ! Changes
+____________________________________________________________________________
 [  8837] By: autrijus                              on 2003/11/13  17:30:26
         Log: * This be 0.10.
              * Jos Boumans points out that %tense() was not working.

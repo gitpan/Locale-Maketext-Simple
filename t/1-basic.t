@@ -1,11 +1,14 @@
 # $File: //member/autrijus/Locale-Maketext-Simple/t/1-basic.t $ $Author: autrijus $
-# $Revision: #6 $ $Change: 8837 $ $DateTime: 2003/11/13 17:30:26 $
+# $Revision: #7 $ $Change: 9924 $ $DateTime: 2004/02/06 11:19:59 $
 
 use strict;
 use Test;
 
-BEGIN { plan tests => 9 }
-BEGIN { $INC{'Locale/Maketext/Lexicon.pm'} = __FILE__ }
+BEGIN {
+    plan tests => 9;
+    $INC{'Locale/Maketext/Lexicon.pm'} = __FILE__;
+    $Locale::Maketext::Lexicon::VERSION = 0;
+}
 
 use Locale::Maketext::Simple;
 ok(Locale::Maketext::Simple->VERSION);
