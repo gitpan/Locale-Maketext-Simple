@@ -2,7 +2,7 @@
 # $Revision: #26 $ $Change: 5492 $ $DateTime: 2003/04/28 09:20:51 $
 
 package Locale::Maketext::Simple;
-$Locale::Maketext::Simple::VERSION = '0.01';
+$Locale::Maketext::Simple::VERSION = '0.02';
 
 use strict;
 
@@ -12,8 +12,8 @@ Locale::Maketext::Simple - Simple interface to Locale::Maketext::Lexicon
 
 =head1 VERSION
 
-This document describes version 0.01 of Locale::Maketext::Simple,
-released May 10, 2003.
+This document describes version 0.02 of Locale::Maketext::Simple,
+released May 20, 2003.
 
 =head1 SYNOPSIS
 
@@ -21,6 +21,7 @@ Minimal setup (looks for F<auto/Foo/*.po> and F<auto/Foo/*.mo>):
 
     package Foo;
     use Locale::Maketext::Simple;	# exports 'loc'
+    loc_lang('fr');			# set language to French
     sub hello {
 	print loc("Hello, [_1]!", "World");
     }
@@ -51,13 +52,18 @@ function like C<[quant,_1]> are treated as C<[_1]>.
 
 =head1 OPTIONS
 
-All options are passed to C<import>.
+All options should be passed to C<import>.
 
 =head2 Class
 
 By default, B<Locale::Maketext::Simple> draws its source from the
 calling package's F<auto/> directory; you can override this behaviour
 by explicitly specifying another package as C<Class>.
+
+=head2 Path
+
+If your PO and MO files are under a path elsewhere than C<auto/>,
+you may specify it using the C<Path> option.
 
 =head2 Style
 
@@ -90,9 +96,12 @@ sub import {
     $args{Export}   ||= 'loc';
     $args{Subclass} ||= 'I18N';
 
-    my $loc = $class->load_loc(%args) || $class->default_loc(%args);
+    my ($loc, $loc_lang) = $class->load_loc(%args);
+    $loc ||= $class->default_loc(%args);
+
     no strict 'refs';
     *{caller(0) . "::$args{Export}"} = $loc if $args{Export};
+    *{caller(0) . "::$args{Export}_lang"} = $loc_lang || sub { 1 };
 }
 
 my %Loc;
@@ -105,7 +114,7 @@ sub load_loc {
     eval { require Locale::Maketext::Lexicon; 1 }   or return;
     Locale::Maketext::Lexicon->VERSION < 0.20	    or return;
     eval { require File::Spec; 1 }		    or return;
-    my $path = $class->auto_path($args{Class})	    or return;
+    my $path = $args{Path} || $class->auto_path($args{Class})	or return;
 
     my $pattern = quotemeta(File::Spec->catfile($path, '*.[pm]o'));
 
@@ -139,7 +148,7 @@ sub load_loc {
 	die "Unknown Style: $style";
     }
 
-    return $Loc{$pkg};
+    return $Loc{$pkg}, sub { $lh = $pkg->get_handle($_[0]) };
 }
 
 sub default_loc {
@@ -216,6 +225,8 @@ sub auto_path {
 =head1 ACKNOWLEDGMENTS
 
 Thanks to Jos I. Boumans for suggesting this module to be written.
+
+Thanks to Chia-Liang Kao for suggesting C<Path> and C<loc_lang>.
 
 =head1 SEE ALSO
 

@@ -1,8 +1,8 @@
 #!/usr/bin/perl
 # $File: //member/autrijus/Locale-Maketext-Simple/Makefile.PL $ $Author: autrijus $
-# $Revision: #1 $ $Change: 5742 $ $DateTime: 2003/05/09 20:52:47 $
+# $Revision: #2 $ $Change: 6008 $ $DateTime: 2003/05/20 09:04:29 $
 
-use ExtUtils::MakeMaker;
+use inc::Module::Install;
 
 WriteMakefile(
     AUTHOR		=> 'Autrijus Tang (autrijus@autrijus.org)',

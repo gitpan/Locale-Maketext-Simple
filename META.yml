@@ -1,0 +1,9 @@
+name: Locale::Maketext::Simple
+version: 0.02
+abstract: Simple interface to Locale::Maketext::Lexicon
+author: Autrijus Tang (autrijus@autrijus.org)
+distribution_type: module
+private:
+  directory:
+    - inc
+generated_by: Module::Install version 0.19_99
