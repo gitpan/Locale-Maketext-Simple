@@ -1,0 +1,9 @@
+____________________________________________________________________________
+[  5742] By: autrijus                              on 2003/05/09  20:52:47
+        Log: * 0.01, barely tested initial release.
+	   + MANIFEST Makefile.PL README t/1-basic.t
+	   ! lib/Locale/Maketext/Simple.pm
+____________________________________________________________________________
+[  5643] By: autrijus                              on 2003/05/06  05:36:38
+        Log: * move to my member space for engineering
+	  +> lib/Locale/Maketext/Simple.pm
