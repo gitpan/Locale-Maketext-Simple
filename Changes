@@ -1,137 +1,59 @@
-____________________________________________________________________________
-[ 10409] By: autrijus                              on 2004/03/17  13:19:56
-        Log: * This be 0.12.
-             * supports the "Encoding" directive, including the
-             special "locale" value.
-	   ! lib/Locale/Maketext/Simple.pm
-____________________________________________________________________________
-[  9924] By: autrijus                              on 2004/02/06  11:19:59
-        Log: * fix test to not emit warnings
-	   ! t/1-basic.t
-____________________________________________________________________________
-[  9923] By: autrijus                              on 2004/02/06  11:16:57
-        Log: * changes and signatures.
-	   ! Changes MANIFEST
-____________________________________________________________________________
-[  9922] By: autrijus                              on 2004/02/06  11:13:31
-        Log: * This be 0.11.
-             * Marcus Ramberg repoted that ->auto_path was broken and
-             always checking L::M::S's auto/ path.
-	   ! Makefile.PL README
-	   ! lib/Locale/Maketext/Simple.pm
-____________________________________________________________________________
-[  8838] By: autrijus                              on 2003/11/13  17:33:37
-        Log: * changes.
-	   ! Changes
-____________________________________________________________________________
-[  8837] By: autrijus                              on 2003/11/13  17:30:26
-        Log: * This be 0.10.
-             * Jos Boumans points out that %tense() was not working.
-	   ! Makefile.PL lib/Locale/Maketext/Simple.pm
-	   ! t/1-basic.t
-____________________________________________________________________________
-[  8174] By: autrijus                              on 2003/09/18  20:32:49
-        Log: * changes.
-	   ! Changes
-____________________________________________________________________________
-[  8150] By: autrijus                              on 2003/09/16  13:38:35
-        Log: * add reload_loc to clear away cached handles.
-	   ! lib/Locale/Maketext/Simple.pm t/1-basic.t
-____________________________________________________________________________
-[  8149] By: autrijus                              on 2003/09/16  13:30:32
-        Log: * This be 0.09.
-             * Marcus Ramberg reports that without an English .po,
-	       L::M::S
-             would not pick up any other POs.  Fixed.
-             * Also, the default "maketext" calling style was broken. 
-	       Fixed.
-	   ! lib/Locale/Maketext/Simple.pm
-____________________________________________________________________________
-[  7720] By: autrijus                              on 2003/08/26  10:39:56
-        Log: * changes.
-	   ! Changes
-____________________________________________________________________________
-[  7719] By: autrijus                              on 2003/08/26  10:36:56
-        Log: * This be 0.08 for real.
-             * loc_lang() could not take zero arguments to switch to
-             "autodetected" language properly.
-	   ! lib/Locale/Maketext/Simple.pm
-____________________________________________________________________________
-[  7718] By: autrijus                              on 2003/08/26  10:30:36
-        Log: * This be 0.08.
-	   ! lib/Locale/Maketext/Simple.pm
-____________________________________________________________________________
-[  7688] By: autrijus                              on 2003/08/24  03:51:49
-        Log: * this be 0.08
-	   ! lib/Locale/Maketext/Simple.pm
-____________________________________________________________________________
-[  7649] By: autrijus                              on 2003/08/21  21:20:34
-        Log: * changes and signatures.
-	   + t/0-signature.t
-	   ! Changes MANIFEST
-____________________________________________________________________________
-[  7646] By: autrijus                              on 2003/08/21  21:10:46
-        Log: * This be 0.07.
-             * quant() was not working as advertised; thanks to kane for
-             pointing it out.
-	   ! lib/Locale/Maketext/Simple.pm t/1-basic.t
-____________________________________________________________________________
-[  7577] By: autrijus                              on 2003/08/17  13:50:39
-        Log: * changes
-	   ! Changes
-____________________________________________________________________________
-[  7576] By: autrijus                              on 2003/08/17  13:43:48
-        Log: * This is the real 0.05. oops.
-	   ! lib/Locale/Maketext/Simple.pm
-____________________________________________________________________________
-[  7575] By: autrijus                              on 2003/08/17  13:41:22
-        Log: * This be 0.05...
-             * fixes breakage on win32 with \\ pathnames.
-	   ! lib/Locale/Maketext/Simple.pm
-____________________________________________________________________________
-[  7574] By: autrijus                              on 2003/08/17  13:09:58
-        Log: * changes.
-	   ! Changes
-____________________________________________________________________________
-[  7573] By: autrijus                              on 2003/08/17  08:19:55
-        Log: * preparing for 0.04. 
-	   ! lib/Locale/Maketext/Simple.pm
-____________________________________________________________________________
-[  7572] By: autrijus                              on 2003/08/17  07:34:46
-        Log: * oops, was not owrking at all
-	   ! lib/Locale/Maketext/Simple.pm
-____________________________________________________________________________
-[  7312] By: autrijus                              on 2003/08/03  08:21:47
-        Log: * changes and signatures.
-	   ! Changes MANIFEST
-____________________________________________________________________________
-[  7311] By: autrijus                              on 2003/08/03  08:19:59
-        Log: * This be 0.03.
-             * Documentation cleanup.
-             * Avoid warnings during testing.
-	   ! lib/Locale/Maketext/Simple.pm t/1-basic.t
-____________________________________________________________________________
-[  6008] By: autrijus                              on 2003/05/20  09:04:29
-        Log: * changes and signatures.
-	   ! Changes MANIFEST Makefile.PL README
-____________________________________________________________________________
-[  6001] By: autrijus                              on 2003/05/20  08:07:50
-        Log: * This be 0.02.
-	   ! lib/Locale/Maketext/Simple.pm
-____________________________________________________________________________
-[  6000] By: autrijus                              on 2003/05/20  08:03:23
-        Log: * add Path option and loc_lang function.
-	   ! lib/Locale/Maketext/Simple.pm t/1-basic.t
-____________________________________________________________________________
-[  5743] By: autrijus                              on 2003/05/09  20:53:56
-        Log: * changes.
-	   + Changes
-____________________________________________________________________________
-[  5742] By: autrijus                              on 2003/05/09  20:52:47
-        Log: *¢0.01, barely tested initial release.
-	   + MANIFEST Makefile.PL README t/1-basic.t
-	   ! lib/Locale/Maketext/Simple.pm
-____________________________________________________________________________
-[  5643] By: autrijus                              on 2003/05/06  05:36:38
-        Log: * move to my member space for engineering
-	  +> lib/Locale/Maketext/Simple.pm
+[Changes for 0.13 - 2006-04-11]
+
+* The "_style => 'gettext'" option was broken for adjacent variables
+  such as "%1%2%3".
+
+* Also removed the sole occurrence of of $&. 
+
+[Changes for 0.12 - 2004-03-17]
+
+* Supports the "Encoding" directive, including the special "locale" value.
+
+* Fix test to not emit warnings.
+
+[Changes for 0.11 - 2004-02-06]
+
+* ->auto_path was broken and always checking L::M::S's auto/ path.
+  Reported By: Marcus Ramberg
+
+[Changes for 0.10 - 2003-11-13]
+
+* The "%tense()" form was not working.
+  Reported By: Jos Boumans
+
+* Add reload_loc to clear away all cached handles.
+
+[Changes for 0.09 - 2003-09-16]
+
+* Without an English .po, L::M::S would not pick up any other POs.
+  Reported By: Marcus Ramberg
+
+* The default "maketext" calling style was broken.
+
+[Changes for 0.08 - 2003-08-26]
+
+* Calling loc_lang() without arguments now switches to "autodetected"
+  language properly.
+
+[Changes for 0.07 - 2003-08-21]
+
+* The "%quant()" form was not working as advertised.
+  Reported By: Jos Boumans
+
+[Changes for 0.05 - 2003-08-17]
+
+* Fixed breakage on Win32 with \\ pathnames.
+
+[Changes for 0.03 - 2003-08-03]
+
+* Documentation cleanup.
+
+* Avoid warnings during testing.
+
+[Changes for 0.03 - 2003-05-20]
+
+* Add Path option and loc_lang function.
+
+[Changes for 0.01 - 2003-05-09]
+
+* Initial release.

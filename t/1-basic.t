@@ -1,6 +1,3 @@
-# $File: //member/autrijus/Locale-Maketext-Simple/t/1-basic.t $ $Author: autrijus $
-# $Revision: #7 $ $Change: 9924 $ $DateTime: 2004/02/06 11:19:59 $
-
 use strict;
 use Test;
 

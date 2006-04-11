@@ -1,8 +1,5 @@
-# $File: //member/autrijus/Locale-Maketext-Simple/lib/Locale/Maketext/Simple.pm $ $Author: autrijus $
-# $Revision: #18 $ $Change: 10409 $ $DateTime: 2004/03/17 13:19:56 $
-
 package Locale::Maketext::Simple;
-$Locale::Maketext::Simple::VERSION = '0.12';
+$Locale::Maketext::Simple::VERSION = '0.13';
 
 use strict;
 
@@ -12,8 +9,8 @@ Locale::Maketext::Simple - Simple interface to Locale::Maketext::Lexicon
 
 =head1 VERSION
 
-This document describes version 0.12 of Locale::Maketext::Simple,
-released March 17, 2004.
+This document describes version 0.13 of Locale::Maketext::Simple,
+released April 11, 2006.
 
 =head1 SYNOPSIS
 
@@ -171,10 +168,17 @@ sub load_loc {
     elsif ($style eq 'gettext') {
 	$Loc{$pkg} = sub {
 	    my $str = shift;
-	    $str =~ s/[\~\[\]]/~$&/g;
-	    $str =~ s{(^|[^%\\])%([A-Za-z#*]\w*)\(([^\)]*)\)}
-		     {"$1\[$2,"._unescape($3)."]"}eg;
-	    $str =~ s/(^|[^%\\])%(\d+|\*)/$1\[_$2]/g;
+            $str =~ s{([\~\[\]])}{~$1}g;
+            $str =~ s{  ([%\\]%)                        # 1 - escaped sequence
+                    |  %
+                            (?:
+                                ([A-Za-z#*]\w*)         # 2 - function call
+                                    \(([^\)]*)\)        # 3 - arguments
+                            |
+                                (\d+|\*)                # 4 - variable
+                            )
+                    }
+                    {$1 ? $1 : $2 ? "\[$2,"._unescape($3)."]" : "[_$4]"}egx;
 	    return $lh->maketext($str, @_);
 	};
     }
@@ -296,11 +300,11 @@ L<Locale::Maketext>, L<Locale::Maketext::Lexicon>
 
 =head1 AUTHORS
 
-Autrijus Tang E<lt>autrijus@autrijus.orgE<gt>
+Audrey Tang E<lt>cpan@audreyt.orgE<gt>
 
 =head1 COPYRIGHT
 
-Copyright 2003, 2004 by Autrijus Tang E<lt>autrijus@autrijus.orgE<gt>.
+Copyright 2003, 2004, 2005, 2006 by Audrey Tang E<lt>cpan@audreyt.orgE<gt>.
 
 This program is free software; you can redistribute it and/or 
 modify it under the same terms as Perl itself.
