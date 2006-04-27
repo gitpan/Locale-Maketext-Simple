@@ -1,3 +1,8 @@
+[Changes for 0.14 - 2006-04-27]
+
+* Repair Perl 5.005 compatibility in the build system.
+  Reported By: Rong-En Fan
+
 [Changes for 0.13 - 2006-04-11]
 
 * The "_style => 'gettext'" option was broken for adjacent variables

@@ -1,5 +1,5 @@
 package Locale::Maketext::Simple;
-$Locale::Maketext::Simple::VERSION = '0.13';
+$Locale::Maketext::Simple::VERSION = '0.14';
 
 use strict;
 
@@ -9,8 +9,8 @@ Locale::Maketext::Simple - Simple interface to Locale::Maketext::Lexicon
 
 =head1 VERSION
 
-This document describes version 0.13 of Locale::Maketext::Simple,
-released April 11, 2006.
+This document describes version 0.14 of Locale::Maketext::Simple,
+released April 27, 2006.
 
 =head1 SYNOPSIS
 
@@ -168,17 +168,20 @@ sub load_loc {
     elsif ($style eq 'gettext') {
 	$Loc{$pkg} = sub {
 	    my $str = shift;
-            $str =~ s{([\~\[\]])}{~$1}g;
-            $str =~ s{  ([%\\]%)                        # 1 - escaped sequence
-                    |  %
-                            (?:
-                                ([A-Za-z#*]\w*)         # 2 - function call
-                                    \(([^\)]*)\)        # 3 - arguments
-                            |
-                                (\d+|\*)                # 4 - variable
-                            )
-                    }
-                    {$1 ? $1 : $2 ? "\[$2,"._unescape($3)."]" : "[_$4]"}egx;
+            $str =~ s{
+                ([%\\]%)                        # 1 - escaped sequence
+            |
+                %   (?:
+                        ([A-Za-z#*]\w*)         # 2 - function call
+                            \(([^\)]*)\)        # 3 - arguments
+                    |
+                        ([1-9]\d*|\*)           # 4 - variable
+                    )
+            }{
+                $1 ? $1
+                   : $2 ? "\[$2,"._unescape($3)."]"
+                        : "[_$4]"
+            }egx;
 	    return $lh->maketext($str, @_);
 	};
     }
@@ -198,10 +201,10 @@ sub default_loc {
     if ($style eq 'maketext') {
 	return sub {
 	    my $str = shift;
-	    $str =~ s/((?<!~)(?:~~)*)\[_(\d+)\]/$1%$2/g;
-	    $str =~ s{((?<!~)(?:~~)*)\[([A-Za-z#*]\w*),([^\]]+)\]}
-		     {"$1%$2("._escape($3).")"}eg;
-	    $str =~ s/~([\[\]])/$1/g;
+            $str =~ s{((?<!~)(?:~~)*)\[_([1-9]\d*|\*)\]}
+                     {$1%$2}g;
+            $str =~ s{((?<!~)(?:~~)*)\[([A-Za-z#*]\w*),([^\]]+)\]} 
+                     {"$1%$2(" . _escape($3) . ')'}eg;
 	    _default_gettext($str, @_);
 	};
     }
@@ -252,14 +255,14 @@ sub _default_gettext {
 
 sub _escape {
     my $text = shift;
-    $text =~ s/\b_(\d+)/%$1/;
+    $text =~ s/\b_([1-9]\d*)/%$1/g;
     return $text;
 }
 
 sub _unescape {
-    my $str = shift;
-    $str =~ s/(^|,)%(\d+|\*)(,|$)/$1_$2$3/g;
-    return $str;
+    join(',', map {
+        /\A(\s*)%([1-9]\d*|\*)(\s*)\z/ ? "$1_$2$3" : $_
+    } split(/,/, $_[0]));
 }
 
 sub auto_path {
