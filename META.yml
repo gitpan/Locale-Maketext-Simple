@@ -2,10 +2,12 @@ abstract: Simple interface to Locale::Maketext::Lexicon
 author: Audrey Tang <cpan@audreyt.org>
 distribution_type: module
 generated_by: Module::Install version 0.62
-license: perl
+license: MIT
 name: Locale-Maketext-Simple
 no_index: 
   directory: 
     - inc
     - t
-version: 0.14
+requires: 
+  perl: 5.004
+version: 0.15
