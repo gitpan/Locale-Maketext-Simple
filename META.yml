@@ -1,13 +1,22 @@
-abstract: Simple interface to Locale::Maketext::Lexicon
-author: Audrey Tang <cpan@audreyt.org>
+---
+abstract: 'Simple interface to Locale::Maketext::Lexicon'
+author:
+  - 'Audrey Tang <cpan@audreyt.org>'
+build_requires:
+  ExtUtils::MakeMaker: 6.42
+configure_requires:
+  ExtUtils::MakeMaker: 6.42
 distribution_type: module
-generated_by: Module::Install version 0.64
+generated_by: 'Module::Install version 0.91'
 license: MIT
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: 1.4
 name: Locale-Maketext-Simple
-no_index: 
-  directory: 
+no_index:
+  directory:
     - inc
     - t
-requires: 
-  perl: 5.004
-version: 0.18
+requires:
+  perl: 5.005
+version: 0.19

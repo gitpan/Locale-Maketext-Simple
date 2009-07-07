@@ -14,26 +14,32 @@ not run its Makefile.PL or Build.PL.
 -----BEGIN PGP SIGNED MESSAGE-----
 Hash: SHA1
 
-SHA1 4255e21f71d00f04359d9109f8ca0764251a15a2 Changes
-SHA1 6b7e67cf03584cac2a373c4641a4b0d26636755c MANIFEST
-SHA1 32e1cd213917e65300702cf594af47da4a342901 META.yml
-SHA1 e28e3f7df03cd7831f81e8a74c0a6c44d9d4650f Makefile.PL
+SHA1 fe98f8e03384cd76bb627181e0e90451b3e59786 Changes
+SHA1 aa653a5c928c7672a3e98d3b7ca6b4966bba961e MANIFEST
+SHA1 11ad5bffeb10be9ccf1378bdbd81fae84f678d1b MANIFEST.SKIP
+SHA1 301865cb92942adaad6136d3d48df6b0c4c59e01 META.yml
 SHA1 d69e7f71c0e6cc89349bded9d470222294a0d2e2 README
-SHA1 9b2f9d83bcf77860f53a0c07c90a4a59ad9f5df1 inc/Module/Install.pm
-SHA1 abe32855d75ab13747cf65765af9947b7a8c3057 inc/Module/Install/Base.pm
-SHA1 95b81d1e91bd634467bf633571eff4420e9c04eb inc/Module/Install/Can.pm
-SHA1 1fe98c63cf9d7271c8cb4183ba230f152df69e26 inc/Module/Install/Fetch.pm
-SHA1 2249171a2b72cd73ff2c0a06597d29f86e5df456 inc/Module/Install/Makefile.pm
-SHA1 381bb98ea3877bba49ae85e7a7ea130645fd3dbf inc/Module/Install/Metadata.pm
-SHA1 0c2118868ef82ac517eb6d9c3bd93e6eb9bbf83e inc/Module/Install/Win32.pm
-SHA1 e827d6d43771032fa3df35c0ad5e5698d0e54cda inc/Module/Install/WriteAll.pm
-SHA1 d9a4ab5312d3f099db5cfe156c46e9c6526e6cb8 lib/Locale/Maketext/Simple.pm
+SHA1 fd5f3c4f0418efee3b9b16cf8c3902e8374909df inc/Module/Install.pm
+SHA1 7cd7c349afdf3f012e475507b1017bdfa796bfbd inc/Module/Install/Base.pm
+SHA1 ba186541bbf6439111f01fc70769cf24d22869bf inc/Module/Install/Can.pm
+SHA1 aaa50eca0d7751db7a4d953fac9bc72c6294e238 inc/Module/Install/Fetch.pm
+SHA1 12bf1867955480d47d5171a9e9c6a96fabe0b58f inc/Module/Install/Metadata.pm
+SHA1 f7ee667e878bd2faf22ee9358a7b5a2cc8e91ba4 inc/Module/Install/Win32.pm
+SHA1 8ed29d6cf217e0977469575d788599cbfb53a5ca inc/Module/Install/WriteAll.pm
+SHA1 eb5bf360c703a1bc8bd66703991f3c47e97ab7ca lib/Locale/Maketext/Simple.pm
 SHA1 41afe2c04bb573b40e283e2b210ed70a47a3f8ba t/0-signature.t
 SHA1 b216bc8e010ed533bfce78a2812319d5e68bfac7 t/1-basic.t
+SHA1 00121be81d61b67943f62dac71b841e4bec156fe t/2-load_po_without_i_default.t
+SHA1 c9fdeb4c2da957987cf21854230ce5b945b0d2e7 t/3-load_po_with_i_default.t
+SHA1 949aa76c2746be53498cfa32f18685bc8259b97f t/po_with_i_default/en.po
+SHA1 afd558690890a04b1dc6378951cd3fa4d8f55afe t/po_with_i_default/fr.po
+SHA1 2dc78cca78e686536ae236d10d5c19ae3d4a14f6 t/po_with_i_default/i_default.po
+SHA1 949aa76c2746be53498cfa32f18685bc8259b97f t/po_without_i_default/en.po
+SHA1 afd558690890a04b1dc6378951cd3fa4d8f55afe t/po_without_i_default/fr.po
 -----BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.4.3 (Darwin)
+Version: GnuPG v1.4.9 (Darwin)
 
-iD8DBQFFAX5ItLPdNzw1AaARAlGIAJ45ocfM/3z1AKj0uk5womixG0qJ9gCeNY8s
-ksmccl+OzHEUxaUDDpnefNE=
-=vWQ0
+iEYEARECAAYFAkpTleUACgkQEi9d9xCOQEagHQCfcMN7KFHHKmvzeOXgbzy0xFak
+eGIAnRjxDHfl3ya+VqUViDji6W7Bxlsm
+=2u4q
 -----END PGP SIGNATURE-----
