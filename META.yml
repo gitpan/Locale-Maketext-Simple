@@ -1,6 +1,6 @@
 --- #YAML:1.0
 name:               Locale-Maketext-Simple
-version:            0.20_01
+version:            0.20_02
 abstract:           Simple interface to Locale::Maketext::Lexicon
 author:
     - Audrey Tang <cpan AT audreyt DOT org>
