@@ -14,13 +14,13 @@ not run its Makefile.PL or Build.PL.
 -----BEGIN PGP SIGNED MESSAGE-----
 Hash: SHA1
 
-SHA1 bd56f925b063c932a43ff7d5fd88ac96c28d4ac1 Changes
+SHA1 e41480f829daffd713f93fbab1e855abb30b3ece Changes
 SHA1 1fcfad10f84ce79a39d29831027a7c8b8c223eca MANIFEST
 SHA1 e476d8bd724d46eb9e255cc8afc98b92269e2255 MANIFEST.SKIP
-SHA1 53b1a4dbaad37ced718e06700edc05e019d0956e META.yml
-SHA1 074b7975f68941d5a32782e7f3dbffada190caec Makefile.PL
+SHA1 20b4987cb5339995aadcb850325234ed6f3029b3 META.yml
+SHA1 5987882630ce9e3748170ee4d7f8a52ce80bd31a Makefile.PL
 SHA1 d69e7f71c0e6cc89349bded9d470222294a0d2e2 README
-SHA1 23ca98f3c38cf7079d44dd41a6fc8529b0072286 lib/Locale/Maketext/Simple.pm
+SHA1 1e0ce7f9160501bd837884fbca60d8b1403767fb lib/Locale/Maketext/Simple.pm
 SHA1 41afe2c04bb573b40e283e2b210ed70a47a3f8ba t/0-signature.t
 SHA1 b216bc8e010ed533bfce78a2812319d5e68bfac7 t/1-basic.t
 SHA1 009f442681042355b9a4cac937bae8bad49bdbfe t/2-load_po_without_i_default.t
@@ -31,9 +31,9 @@ SHA1 2dc78cca78e686536ae236d10d5c19ae3d4a14f6 t/po_with_i_default/i_default.po
 SHA1 949aa76c2746be53498cfa32f18685bc8259b97f t/po_without_i_default/en.po
 SHA1 afd558690890a04b1dc6378951cd3fa4d8f55afe t/po_without_i_default/fr.po
 -----BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.4.9 (Darwin)
+Version: GnuPG v1.4.9 (GNU/Linux)
 
-iEYEARECAAYFAkpac5UACgkQEi9d9xCOQEbjagCeJEM5N4/KFGOKKQ5jNj419CI6
-jf4AmQHGNDfFJTyCwci6NBJB+6iMgeaO
-=7h8X
+iEYEARECAAYFAkqJY+oACgkQEi9d9xCOQEbaCwCfUP2LXGdGVDGAJ9/h1wsD+Yrb
+8J0AniuakRrTBsBS/5yoIYPwUyAO41zg
+=wQRp
 -----END PGP SIGNATURE-----
